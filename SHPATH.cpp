@@ -5,10 +5,10 @@
 #include <utility>
 using namespace std;
 
-vector <int> dijkstra(vector <pair<int, int> > graph[], int n, int s){
+vector <int> dijkstra(vector <pair<int, int>> graph[], int n, int s){
 	int i, u, v, w;
 	vector <int> dist(n+1, -1), visited(n+1, 0);
-	priority_queue <pair<int, int>, vector<pair<int, int> >, greater<pair<int, int> > > pq;
+	priority_queue <pair <int, int>, vector <pair<int, int>>, greater <pair<int, int>>> pq;
 	pair <int, int> p;
 	dist[s]=0;
 	pq.push(make_pair(dist[s], s));
