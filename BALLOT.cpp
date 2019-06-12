@@ -9,7 +9,7 @@ int main(){
 		int a[N];
 		for(i=0; i<N; i++)
 			cin>>a[i];	
-		low=0;	high=*max_element(a, a+N);	max_people=high;
+		low=0;	  high=*max_element(a, a+N);	max_people=high;
 		while(low<high){
 			mid=low+(high-low)/2;
 			for(i=0, no_ballots=0; i<N; i++)
