@@ -15,6 +15,7 @@ int dijkstraShortesPath(vector <pair<int, int>> graph[], int N, int src, int des
 	pq.push(make_pair(dist[src], src));
 	while(!pq.empty()){
 		u=pq.top().second;
+		pq.pop();
 		visited[u]=1;
 		for(i=0; i<graph[u].size(); i++){
 			v=graph[u][i].first;
@@ -28,7 +29,6 @@ int dijkstraShortesPath(vector <pair<int, int>> graph[], int N, int src, int des
 			else if(dist[v]==dist[u]+w)
 				prev[v].push_back(u);
 		}
-		pq.pop();
 	}
 	if(dist[dest]==-1)
 		return -1;
@@ -56,6 +56,7 @@ int dijkstraAlmostShortestPath(vector <pair<int, int>> graph[], int N, int src, 
 	q.push(make_pair(dist[src], src));
 	while(!q.empty()){
 		u=q.top().second;
+		q.pop();
 		visited[u]=1;
 		for(i=0; i<graph[u].size(); i++){
 			v=graph[u][i].first;
@@ -67,7 +68,6 @@ int dijkstraAlmostShortestPath(vector <pair<int, int>> graph[], int N, int src, 
 				}
 			}
 		}
-		q.pop();
 	}
 	shortestPathEdges.clear();
 	return dist[dest];
