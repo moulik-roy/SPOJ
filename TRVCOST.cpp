@@ -12,6 +12,7 @@ vector <int> dijkstra(vector <pair<int, int>> graph[], int src){
 	q.push(make_pair(dist[src], src));
 	while(!q.empty()){
 		u=q.top().second;
+		q.pop();
 		visited[u]=1;
 		for(i=0; i<graph[u].size(); i++){
 			v=graph[u][i].first;
@@ -21,7 +22,6 @@ vector <int> dijkstra(vector <pair<int, int>> graph[], int src){
 				q.push(make_pair(dist[v], v));
 			}
 		}
-		q.pop();
 	}
 	return dist;
 }
