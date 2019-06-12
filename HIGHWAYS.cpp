@@ -21,6 +21,7 @@ int main(){
 		q.push(make_pair(distance[src], src));
 		while(!q.empty()){
 			u=q.top().second;
+			q.pop();
 			visited[u]=1;
 			for(i=0; i<graph[u].size(); i++){
 				v=graph[u][i].first;
@@ -30,7 +31,6 @@ int main(){
 					q.push(make_pair(distance[v], v));
 				}
 			}
-			q.pop();
 		}
 		if(distance[dest]==-1)
 			cout<<"NONE\n";
