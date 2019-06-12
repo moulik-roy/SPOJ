@@ -8,23 +8,21 @@ using namespace std;
 vector <int> dijkstra(vector <pair<int, int>> graph[], int n, int s){
 	int i, u, v, w;
 	vector <int> dist(n+1, -1), visited(n+1, 0);
-	priority_queue <pair <int, int>, vector <pair<int, int>>, greater <pair<int, int>>> pq;
-	pair <int, int> p;
+	priority_queue <pair <int, int>, vector <pair<int, int>>, greater <pair<int, int>>> q;
 	dist[s]=0;
-	pq.push(make_pair(dist[s], s));
-	while(!pq.empty()){
-		p=pq.top();
-		u=p.second;
+	q.push(make_pair(dist[s], s));
+	while(!q.empty()){
+		u=q.top().second;
+		q.pop();
 		visited[u]=1;
 		for(i=0; i<graph[u].size(); i++){
 			v=graph[u][i].first;
 			w=graph[u][i].second;
 			if((dist[v]==-1 || dist[v]>dist[u]+w) && !visited[v]){
 				dist[v]=dist[u]+w;
-				pq.push(make_pair(dist[v], v));
+				q.push(make_pair(dist[v], v));
 			}
 		}
-		pq.pop();
 	}
 	return dist;
 }
