@@ -17,7 +17,7 @@ void dfs(vector <int> DAG[], int s, int visited[]){
 }
 
 int main(){
-	int N, M, T_0, i, k, T_k;
+	int N, M, i, k, T_0, T_k;
 	cin>>N>>M;
 	vector <int> DAG[N+1];
 	int visited[N+1];
