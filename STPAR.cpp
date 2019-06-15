@@ -14,7 +14,7 @@ int main(){
     			c++;
     			s.pop();
     		}
-			if(a[i]==c)
+		if(a[i]==c)
     			c++;
     		else if(!s.empty() && s.top()<a[i]){
     			flag=1;
