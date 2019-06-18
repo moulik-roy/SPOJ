@@ -10,7 +10,7 @@ int main(){
 		x=s[0]-'0';
 		y=s[1]-'0';
 		z=s[3]-'0';
-		n=(10*x)+y;
+		n=10*x+y;
 		while(z--)
 			n=n*10;
 		p=(int)log2(n);
