@@ -7,7 +7,7 @@ using namespace std;
 
 set <pair<int, int>> shortestPathEdges;
 
-int dijkstraShortesPath(vector <pair<int, int>> graph[], int N, int src, int dest){
+int dijkstraShortestPath(vector <pair<int, int>> graph[], int N, int src, int dest){
 	int i, j, u, v, w;
 	vector <int> dist(N, -1), visited(N, 0), prev[N];
 	priority_queue <pair <int, int>, vector <pair<int, int>>, greater <pair<int, int>>> pq;
@@ -82,7 +82,7 @@ int main() {
 			cin>>U>>V>>P;
 			graph[U].push_back(make_pair(V, P));
 		}
-		d=dijkstraShortesPath(graph, N, S, D);
+		d=dijkstraShortestPath(graph, N, S, D);
 		if(d==-1)
 			cout<<"-1\n";
 		else{
