@@ -33,14 +33,16 @@ int dijkstraShortestPath(vector <pair<int, int>> graph[], int N, int src, int de
 	if(dist[dest]==-1)
 		return -1;
 	visited.assign(N, 0);
+	visited[dest]=1;
 	queue <int> q;
 	q.push(dest);
 	while(!q.empty()){
 		u=q.front();
-		visited[u]=1;
 		for(i=0; i<prev[u].size(); i++){
-			if(!visited[prev[u][i]])
+			if(!visited[prev[u][i]]){
+				visited[prev[u][i]]=1;
 				q.push(prev[u][i]);
+			}
 			shortestPathEdges.insert(make_pair(prev[u][i], u));
 		}
 		q.pop();
