@@ -11,7 +11,7 @@ int main(){
 		cin>>A>>B;
 		int lps[B.length()];
 		vector <int> positions;
-		lps[0]=0;	i=1;	j=0;
+		lps[0]=0;	i=1;	   j=0;
 		while(i<B.length()){
 			if(B[i]==B[j]){
 				lps[i]=lps[j]+1;
