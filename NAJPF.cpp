@@ -14,7 +14,7 @@ int main(){
 		lps[0]=0;	i=1;	   j=0;
 		while(i<B.length()){
 			if(B[i]==B[j]){
-				lps[i]=lps[j]+1;
+				lps[i]=j+1;
 				i++;
 				j++;
 			}
