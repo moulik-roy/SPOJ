@@ -4,7 +4,7 @@ using namespace std;
 
 int KMP(string S){
 	int i, j, lps[S.length()];
-	lps[0]=0;	i=1;	j=0;
+	lps[0]=0;	i=1;	  j=0;
 	while(i<S.length()){
 		if(S[i]==S[j]){
 			lps[i]=j+1;
