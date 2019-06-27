@@ -13,7 +13,7 @@ int main(){
 			cout<<"1\n";
 		else{
 			int lps[N];
-			lps[0]=0;	i=1;	j=0;
+			lps[0]=0;	i=1;	  j=0;
 			while(i<N){
 				if(S[i]==S[j]){
 					lps[i]=j+1;
