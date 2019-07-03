@@ -12,8 +12,8 @@ int main(){
 			cin>>price[i];
 		dp[0]=0;
 		for(i=1; i<=K; i++){
-			for(j=1; j<=K; j++){
-				if(j<=i && price[j-1]!=-1 && dp[i-j]!=-1){
+			for(j=1; j<=i; j++){
+				if(price[j-1]!=-1 && dp[i-j]!=-1){
 					if(dp[i]==-1)
 						dp[i]=dp[i-j]+price[j-1];
 					else
