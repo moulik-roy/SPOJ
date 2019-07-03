@@ -7,15 +7,15 @@ int main(){
 	long int N, i, j, k, count;
 	vector <long int> v1, v2;
 	cin>>N;
-	long int a[N];
+	long int S[N];
 	for(i=0; i<N; i++)
-		cin>>a[i];
+		cin>>S[i];
 	for(i=0; i<N; i++){
 		for(j=0; j<N; j++){
 			for(k=0; k<N; k++){
-				v1.push_back(a[i]*a[j]+a[k]);
+				v1.push_back(S[i]*S[j]+S[k]);
 				if(a[k]!=0)
-					v2.push_back((a[i]+a[j])*a[k]);
+					v2.push_back((S[i]+S[j])*S[k]);
 			}
 		}
 	}
