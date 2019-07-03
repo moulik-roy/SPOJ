@@ -8,24 +8,25 @@ int main(){
 	cin>>T;
 	while(T--){
 		cin>>N>>M;
-		vector <int> graph[N+1], visited(N+1, 0);
+		vector <int> graph[N+1], dist(N+1, -1);
 		queue <int> q;
 		for(i=0; i<M; i++){
 			cin>>X>>Y;
 			graph[X].push_back(Y);
 			graph[Y].push_back(X);
 		}
-		q.push(1);
+		q.push(1);	dist[1]=0;
 		c=0;
-		while(!q.empty() && !visited[N]){
+		while(!q.empty() && dist[N]==-1){
 			s=q.size();
 			while(s--){
 				u=q.front();
-				visited[u]=1;
 				for(i=0; i<graph[u].size(); i++){
 					v=graph[u][i];
-					if(!visited[v])
+					if(dist[v]==-1){
+						dist[v]=dist[u]+1;
 						q.push(v);
+					}
 				}
 				q.pop();
 			}
