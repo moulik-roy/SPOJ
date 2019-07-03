@@ -3,9 +3,9 @@
 using namespace std;
 
 int main(){
-	int T, N, K, i, j;
-	cin>>T;
-	while(T--){
+	int C, N, K, i, j;
+	cin>>C;
+	while(C--){
 		cin>>N>>K;
 		vector <int> price(K), dp(K+1, -1);
 		for(i=0; i<K; i++)
