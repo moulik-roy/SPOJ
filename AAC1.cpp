@@ -15,17 +15,17 @@ int main(){
 			graph[X].push_back(Y);
 			graph[Y].push_back(X);
 		}
-		q.push(1);
-		c=0;
+		q.push(1);	visited[1]=1;	    c=0;
 		while(!q.empty() && !visited[N]){
 			s=q.size();
 			while(s--){
 				u=q.front();
-				visited[u]=1;
 				for(i=0; i<graph[u].size(); i++){
 					v=graph[u][i];
-					if(!visited[v])
+					if(!visited[v]){
+						visited[v]=1;
 						q.push(v);
+					}
 				}
 				q.pop();
 			}
