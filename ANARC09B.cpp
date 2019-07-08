@@ -8,9 +8,9 @@ int main(){
     		min_tiles=W/H;
     	else if(H%W==0)
     		min_tiles=H/W;
-   		else
+        else
    			min_tiles=W*H;
-   		cout<<min_tiles<<"\n";
+        cout<<min_tiles<<"\n";
    	}
     return 0;
 }
