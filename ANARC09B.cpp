@@ -11,6 +11,6 @@ int main(){
         else
             min_tiles=W*H;
         cout<<min_tiles<<"\n";
-   	}
+    }
     return 0;
 }
