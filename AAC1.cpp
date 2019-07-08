@@ -4,7 +4,7 @@
 using namespace std;
 
 int main(){
-	int T, N, M, X, Y, i, u, v, s;
+	int T, N, M, X, Y, i, u, v;
 	cin>>T;
 	while(T--){
 		cin>>N>>M;
@@ -17,18 +17,15 @@ int main(){
 		}
 		q.push(1);	dist[1]=0;
 		while(!q.empty() && dist[N]==-1){
-			s=q.size();
-			while(s--){
-				u=q.front();
-				for(i=0; i<graph[u].size(); i++){
-					v=graph[u][i];
-					if(dist[v]==-1){
-						dist[v]=dist[u]+1;
-						q.push(v);
-					}
+			u=q.front();
+			for(i=0; i<graph[u].size(); i++){
+				v=graph[u][i];
+				if(dist[v]==-1){
+					dist[v]=dist[u]+1;
+					q.push(v);
 				}
-				q.pop();
 			}
+			q.pop();
 		}
 		cout<<dist[N]<<"\n";
 	}
