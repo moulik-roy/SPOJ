@@ -7,17 +7,16 @@ using namespace std;
 
 vector <int> bfs(vector <pair<int, int>> tree[], int n, int src){
 	int i, u, v, w;
-	vector <int> dist(n+1, -1), visited(n+1, 0);
+	vector <int> dist(n+1, -1);
 	queue <int> q;
 	dist[src]=0;
 	q.push(src);
 	while(!q.empty()){
 		u=q.front();
-		visited[u]=1;
 		for(i=0; i<tree[u].size(); i++){
 			v=tree[u][i].first;
 			w=tree[u][i].second;
-			if((dist[v]==-1 || dist[v]>dist[u]+w) && !visited[v]){
+			if(dist[v]==-1){
 				dist[v]=dist[u]+w;
 				q.push(v);
 			}
