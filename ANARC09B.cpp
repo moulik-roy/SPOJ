@@ -10,7 +10,7 @@ int main(){
     		min_tiles=H/W;
         else
             min_tiles=W*H;
-   		cout<<min_tiles<<"\n";
+        cout<<min_tiles<<"\n";
    	}
     return 0;
 }
