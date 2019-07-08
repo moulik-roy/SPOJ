@@ -5,7 +5,7 @@
 using namespace std;
 
 vector <vector<int>> bfs(string s[], int n, int m){
-	int i, j, k, size, x, y, dx[4]={0, 1, 0, -1}, dy[4]={1, 0, -1, 0};
+	int i, j, k, x, y, dx[4]={0, 1, 0, -1}, dy[4]={1, 0, -1, 0};
 	vector <vector<int>> dist(n, vector<int>(m, -1));
 	queue <pair<int, int>> q;
 	for(i=0; i<n; i++){
@@ -17,20 +17,17 @@ vector <vector<int>> bfs(string s[], int n, int m){
 		}
 	}
 	while(!q.empty()){
-		size=q.size();
-		while(size--){
-			i=q.front().first;
-			j=q.front().second;
-			for(k=0; k<4; k++){
-				x=i+dx[k];
-				y=j+dy[k];
-				if(x>=0 && x<n && y>=0 && y<m && dist[x][y]==-1){
-					dist[x][y]=dist[i][j]+1;
-					q.push(make_pair(x, y));
-				}
+		i=q.front().first;
+		j=q.front().second;
+		for(k=0; k<4; k++){
+			x=i+dx[k];
+			y=j+dy[k];
+			if(x>=0 && x<n && y>=0 && y<m && dist[x][y]==-1){
+				dist[x][y]=dist[i][j]+1;
+				q.push(make_pair(x, y));
 			}
-			q.pop();
 		}
+		q.pop();
 	}
 	return dist;
 }
