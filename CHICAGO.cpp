@@ -28,15 +28,15 @@ double dijkstra(vector <pair<int, double>> graph[], int n){
 }
 
 int main(){
-	int n, m, i, u, v;
+	int n, m, i, a, b;
 	double p;
 	while(cin>>n && n!=0){
 		cin>>m;
 		vector <pair<int, double>> graph[n+1];
 		for(i=0; i<m; i++){
-			cin>>u>>v>>p;
-			graph[u].push_back(make_pair(v, p/100));
-			graph[v].push_back(make_pair(u, p/100));
+			cin>>a>>b>>p;
+			graph[a].push_back(make_pair(b, p/100));
+			graph[b].push_back(make_pair(a, p/100));
 		}
 		printf("%.6lf percent\n", dijkstra(graph, n));
 	}
