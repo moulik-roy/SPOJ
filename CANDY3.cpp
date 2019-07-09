@@ -5,7 +5,7 @@ int main(){
 	long int T, N, i, candies, sum;
 	cin>>T;
 	while(T--){
-	    cin>>N;
+		cin>>N;
 		for(i=0, sum=0; i<N; i++){
 			cin>>candies;
 			sum=(sum+candies)%N;
