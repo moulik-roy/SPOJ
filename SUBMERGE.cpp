@@ -38,10 +38,7 @@ int main(){
 			graph[U].push_back(V);
 			graph[V].push_back(U);
 		}
-		for(i=1; i<=N; i++){
-			if(!visited[i])
-				dfs(graph, 1, parent, visited, disc, low, islands);
-		}
+		dfs(graph, 1, parent, visited, disc, low, islands);
 		for(i=1, count=0; i<=N; i++){
 			if(islands[i]==1)
 				count++;
