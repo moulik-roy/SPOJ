@@ -12,7 +12,7 @@ void update(long int BIT[], long int N, long int index, long int val){
 }
 
 long int get_sum(long int BIT[], long int index){
-	int sum=0;
+	long int sum=0;
 	while(index>0){
 		sum+=BIT[index];
 		index=index-(index & (-index));
