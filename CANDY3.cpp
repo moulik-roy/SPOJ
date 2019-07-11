@@ -2,7 +2,7 @@
 using namespace std;
 
 int main(){
-	long int T, N, i, candies, sum;
+	long long int T, N, i, candies, sum;
 	cin>>T;
 	while(T--){
 		cin>>N;
@@ -10,7 +10,7 @@ int main(){
 			cin>>candies;
 			sum=(sum+candies)%N;
 		}
-		if(sum%N==0)
+		if(sum==0)
 		    cout<<"YES\n";
 		else
 		    cout<<"NO\n";
