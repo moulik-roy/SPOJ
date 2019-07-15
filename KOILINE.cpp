@@ -36,21 +36,21 @@ void removeKth(int seg_tree[], int k, int i, int s, int e){
 }
 
 int main(){
-	int n, i;
-	cin>>n;
-	int H[n], S[n], seg_tree[4*n];
+	int N, i;
+	cin>>N;
+	int H[n], S[n], seg_tree[4*N];
 	vector <int> v;
-	for(i=0; i<n; i++)
+	for(i=0; i<N; i++)
 		cin>>H[i];
-	sort(H, H+n);
-	build_tree(seg_tree, 0, 0, n-1);
-	for(i=0; i<n; i++)
+	sort(H, H+N);
+	build_tree(seg_tree, 0, 0, N-1);
+	for(i=0; i<N; i++)
 		cin>>S[i];
-	for(i=n-1; i>=0; i--){
-		v.push_back(findKth(seg_tree, H, S[i]+1, 0, 0, n-1));
-		removeKth(seg_tree, S[i]+1, 0, 0, n-1);
+	for(i=N-1; i>=0; i--){
+		v.push_back(findKth(seg_tree, H, S[i]+1, 0, 0, N-1));
+		removeKth(seg_tree, S[i]+1, 0, 0, N-1);
 	}
-	for(i=n-1; i>=0; i--)
+	for(i=N-1; i>=0; i--)
 		cout<<v[i]<<"\n";
 	return 0;
 }
