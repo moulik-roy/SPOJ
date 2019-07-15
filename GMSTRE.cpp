@@ -13,7 +13,8 @@ bool comparator(Level a, Level b){
 		else
 			return (a.E<b.E);
 	}
-	return (a.H>b.H);
+	else
+		return (a.H>b.H);
 }
 
 int main(){
