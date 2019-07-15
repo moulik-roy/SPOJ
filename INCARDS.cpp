@@ -16,6 +16,7 @@ long int dijkstra(vector <pair<long int, long int>> graph[], long int V){
 	while(!q.empty()){
 		u=q.top().second;
 		visited[u]=true;
+		q.pop();
 		for(i=0; i<graph[u].size(); i++){
 			v=graph[u][i].first;
 			w=graph[u][i].second;
@@ -24,7 +25,6 @@ long int dijkstra(vector <pair<long int, long int>> graph[], long int V){
 				q.push(make_pair(dist[v], v));
 			}
 		}
-		q.pop();
 	}
 	for(i=1, sum_cost=0; i<=V; i++)
 		sum_cost+=dist[i];
