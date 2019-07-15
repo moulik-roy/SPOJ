@@ -38,7 +38,7 @@ void removeKth(int seg_tree[], int k, int i, int s, int e){
 int main(){
 	int N, i;
 	cin>>N;
-	int H[n], S[n], seg_tree[4*N];
+	int H[N], S[N], seg_tree[4*N];
 	vector <int> v;
 	for(i=0; i<N; i++)
 		cin>>H[i];
