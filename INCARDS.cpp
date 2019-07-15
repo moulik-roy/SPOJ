@@ -32,7 +32,7 @@ long int dijkstra(vector <pair<long int, long int>> graph[], long int V){
 }
 
 int main(){
-	long int N, P, Q, i, u, v, w, sum;
+	long int N, P, Q, i, u, v, w, min_amount;
 	cin>>N;
 	while(N--){
 		cin>>P>>Q;
@@ -42,8 +42,8 @@ int main(){
 			graph[u].push_back(make_pair(v, w));
 			graph_inv[v].push_back(make_pair(u, w));
 		}
-		sum=dijkstra(graph, P)+dijkstra(graph_inv, P);
-		cout<<sum<<"\n";
+		min_amount=dijkstra(graph, P)+dijkstra(graph_inv, P);
+		cout<<min_amount<<"\n";
 	}
 	return 0;
 }
