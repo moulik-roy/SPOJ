@@ -6,14 +6,14 @@ using namespace std;
 
 vector <int> bfs(vector <int> tree[], int n, int s){
 	int i;
-	vector <int> dist(n, 0), visited(n, 0);
+	vector <int> dist(n, -1);
 	queue <int> q;
+	dist[s]=0;
 	q.push(s);
 	while(!q.empty()){
 		s=q.front();
-		visited[s]=1;
 		for(i=0; i<tree[s].size(); i++){
-			if(!visited[tree[s][i]]){
+			if(dist[tree[s][i]]==-1){
 				dist[tree[s][i]]=dist[s]+1;
 				q.push(tree[s][i]);
 			}
