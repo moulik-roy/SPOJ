@@ -44,7 +44,7 @@ node query_tree(node seg_tree[], int qs, int qe, int i, int s, int e){
 	int mid=s+(e-s)/2;
 	if(qe<=mid)
 		return query_tree(seg_tree, qs, qe, 2*i+1, s, mid);
-	if(qs>mid)
+	else if(qs>mid)
 		return query_tree(seg_tree, qs, qe, 2*i+2, mid+1, e);
 	else
 		return merge(query_tree(seg_tree, qs, mid, 2*i+1, s, mid), query_tree(seg_tree, mid+1, qe, 2*i+2, mid+1, e));
