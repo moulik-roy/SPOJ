@@ -26,7 +26,7 @@ int main(){
 			for(i=0; i<graph[u].size(); i++){
 				v=graph[u][i].first;
 				w=graph[u][i].second;
-				if((distance[v]==-1 || distance[v]>distance[u]+w) && visited[v]==0){
+				if((distance[v]==-1 || distance[v]>distance[u]+w) && !visited[v]){
 					distance[v]=distance[u]+w;
 					q.push(make_pair(distance[v], v));
 				}
