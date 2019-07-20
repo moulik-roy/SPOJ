@@ -28,7 +28,7 @@ vector <int> dijkstra(vector <pair<int, int>> graph[], int n, int src){
 }
 
 int main(){
-	int N, M, Q, i, A, B, L, q, c, max_dist;
+	int N, M, Q, i, A, B, L, q, max_dist, count;
 	cin>>N>>M>>Q;
 	vector <pair<int, int>> graph[N];
 	vector <int> dist;
@@ -43,11 +43,11 @@ int main(){
 		cin>>q;
 		dist=dijkstra(graph, N, q);
 		max_dist=*max_element(dist.begin(), dist.end());
-		for(i=0, c=0; i<dist.size(); i++){
+		for(i=0, count=0; i<dist.size(); i++){
 			if(dist[i]==max_dist)
-				c++;
+				count++;
 		}
-		cout<<max_dist<<" "<<c<<"\n";
+		cout<<max_dist<<" "<<count<<"\n";
 	}
 	return 0;
 }
