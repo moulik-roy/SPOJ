@@ -30,7 +30,7 @@ int main(){
 		memset(BIT, 0, sizeof(BIT));
 		for(i=0; i<K; i++)
 			cin>>superhighways[i].first>>superhighways[i].second;
-		sort(superhighways, superhighways+K, greater<pair<long int, long int>>());
+		sort(superhighways, superhighways+K, greater <pair<long int, long int>>());
 		for(i=0, no_crossings=0; i<K; i++){
 			no_crossings+=get_sum(BIT, superhighways[i].second-1);
 			update(BIT, M, superhighways[i].second, 1);
