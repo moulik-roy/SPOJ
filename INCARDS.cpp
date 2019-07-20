@@ -15,8 +15,8 @@ long int dijkstra(vector <pair<long int, long int>> graph[], long int V){
 	q.push(make_pair(0, 1));
 	while(!q.empty()){
 		u=q.top().second;
-		visited[u]=true;
 		q.pop();
+		visited[u]=true;
 		for(i=0; i<graph[u].size(); i++){
 			v=graph[u][i].first;
 			w=graph[u][i].second;
