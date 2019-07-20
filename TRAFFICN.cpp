@@ -28,26 +28,28 @@ vector <int> dijkstra(vector <pair<int, int>> graph[], int n, int src){
 }
 	
 int main(){
-	int T, n, m, k, s, t, i, u, v, w, d;
+	int T, n, m, k, s, t, i, d, c, l, u, v, q, min_dist;
 	cin>>T;
 	while(T--){
 		cin>>n>>m>>k>>s>>t;
 		vector <pair<int, int>> graph[n+1], graph_inverse[n+1];
-		vector <int> d1, d2;
+		vector <int> dist_s, dist_t;
 		for(i=0; i<m; i++){
-			cin>>u>>v>>w;
-			graph[u].push_back(make_pair(v, w));
-			graph_inverse[v].push_back(make_pair(u, w));
+			cin>>d>>c>>l;
+			graph[d].push_back(make_pair(c, l));
+			graph_inverse[c].push_back(make_pair(d, l));
 		}
-		d1=dijkstra(graph, n, s);
-		d2=dijkstra(graph_inverse, n, t);
-		for(i=0, d=d1[t]; i<k; i++){
-			cin>>u>>v>>w;
-			if(d1[u]!=INT_MAX && d2[v]!=INT_MAX && d1[v]!=INT_MAX && d2[u]!=INT_MAX)
-				d=min(d, w+min(d1[u]+d2[v], d1[v]+d2[u]));
+		dist_s=dijkstra(graph, n, s);
+		dist_t=dijkstra(graph_inverse, n, t);
+		for(i=0, min_dist=dist_s[t]; i<k; i++){
+			cin>>u>>v>>q;
+			if(dist_s[u]!=INT_MAX && dist_t[v]!=INT_MAX)
+				min_dist=min(min_dist, dist_s[u]+dist_t[v]+q);
+			if(dist_s[v]!=INT_MAX && dist_t[u]!=INT_MAX)
+				min_dist=min(min_dist, dist_s[v]+dist_t[u]+q);
 		}
-		if(d==INT_MAX)
-			d=-1;
-		cout<<d<<"\n";
+		if(min_dist==INT_MAX)
+			min_dist=-1;
+		cout<<min_dist<<"\n";
 	}
 }
