@@ -76,7 +76,7 @@ int dijkstraAlmostShortestPath(vector <pair<int, int>> graph[], int N, int src, 
 }
 
 int main() {
-	int N, M, S, D, U, V, P, i, d;
+	int N, M, S, D, U, V, P, i, dist;
 	while(cin>>N>>M && N+M!=0){
 		cin>>S>>D;
 		vector <pair<int, int>> graph[N];
@@ -84,12 +84,12 @@ int main() {
 			cin>>U>>V>>P;
 			graph[U].push_back(make_pair(V, P));
 		}
-		d=dijkstraShortestPath(graph, N, S, D);
-		if(d==-1)
+		dist=dijkstraShortestPath(graph, N, S, D);
+		if(dist==-1)
 			cout<<"-1\n";
 		else{
-			d=dijkstraAlmostShortestPath(graph, N, S, D);
-			cout<<d<<"\n";
+			dist=dijkstraAlmostShortestPath(graph, N, S, D);
+			cout<<dist<<"\n";
 		}
 	}
 	return 0;
