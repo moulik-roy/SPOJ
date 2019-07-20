@@ -39,7 +39,7 @@ int main(){
 	int N, i;
 	cin>>N;
 	int H[N], S[N], seg_tree[4*N];
-	vector <int> v;
+	vector <int> height;
 	for(i=0; i<N; i++)
 		cin>>H[i];
 	sort(H, H+N);
@@ -47,10 +47,10 @@ int main(){
 	for(i=0; i<N; i++)
 		cin>>S[i];
 	for(i=N-1; i>=0; i--){
-		v.push_back(findKth(seg_tree, H, S[i]+1, 0, 0, N-1));
+		height.push_back(findKth(seg_tree, H, S[i]+1, 0, 0, N-1));
 		removeKth(seg_tree, S[i]+1, 0, 0, N-1);
 	}
 	for(i=N-1; i>=0; i--)
-		cout<<v[i]<<"\n";
+		cout<<height[i]<<"\n";
 	return 0;
 }
