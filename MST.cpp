@@ -12,8 +12,8 @@ long int PrimsMST(vector <pair<long int, long int>> graph[], long int N){
 	q.push(make_pair(dist[1], 1));
 	while(!q.empty()){
 		u=q.top().second;
-		visited[u]=1;
 		q.pop();
+		visited[u]=1;
 		for(i=0; i<graph[u].size(); i++){
 			v=graph[u][i].first;
 			w=graph[u][i].second;
