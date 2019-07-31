@@ -17,8 +17,8 @@ int dijkstra(vector <pair<int, int>> graph[], int N, int set[]){
 	}
 	while(!q.empty()){
 		u=q.top().second;
-		visited[u]=1;
 		q.pop();
+		visited[u]=1;
 		if(set[u]==0)
 			return dist[u];
 		for(i=0; i<graph[u].size(); i++){
