@@ -6,52 +6,52 @@ using namespace std;
  
 stack <int> st;
  
-void dfs(vector <int> v[], int s, int visited[]){
-	visited[s]=1;
-	for(int i=0; i<v[s].size(); i++){
-		if(!visited[v[s][i]])
-			dfs(v, v[s][i], visited);
+void dfs(vector <int> graph[], int u, int visited[]){
+	visited[u]=1;
+	for(int i=0; i<graph[u].size(); i++){
+		if(!visited[graph[u][i]])
+			dfs(graph, graph[u][i], visited);
 	}
-	st.push(s);
+	st.push(u);
 }
  
-void dfs2(vector <int> v[], int s, int component[], int c, int visited[]){
-	visited[s]=1;
-	component[s]=c;
-	for(int i=0; i<v[s].size(); i++){
-		if(!visited[v[s][i]])
-			dfs2(v, v[s][i], component, c, visited);
+void dfs2(vector <int> graph[], int u, int visited[], int component[], int c){
+	visited[u]=1;
+	component[u]=c;
+	for(int i=0; i<graph[u].size(); i++){
+		if(!visited[graph[u][i]])
+			dfs2(graph, graph[u][i], visited, component, c);
 	}
 }
  
 int main(){
-	int n, m, i, j, u, v, c, no_scc;
-	cin>>n>>m;
-	vector <int> graph[n+1], graph_inv[n+1], capcity;
-	int visited[n+1], scc[n+1];
-	for(i=0, no_scc=0; i<m; i++){
-		cin>>u>>v;
-		graph_inv[u].push_back(v);
-		graph[v].push_back(u);
+	int N, M, A, B, i, j, c, no_scc;
+	cin>>N>>M;
+	vector <int> graph[N+1], graph_inverse[N+1], capcity;
+	int visited[N+1], scc[N+1];
+	for(i=0, no_scc=0; i<M; i++){
+		cin>>A>>B;
+		graph[A].push_back(B);
+		graph_inverse[B].push_back(A);
 	}
 	memset(visited, 0, sizeof(visited));
-	for(i=1; i<=n; i++){
+	for(i=1; i<=N; i++){
 		if(!visited[i])
-			dfs(graph, i, visited);
+			dfs(graph_inverse, i, visited);
 	}
 	memset(visited, 0, sizeof(visited));
+	memset(scc, -1, sizeof(scc));
 	while(!st.empty()){
-		u=st.top();
-		if(!visited[u])
-			dfs2(graph_inv, u, scc, no_scc++, visited);
-		st.pop();	
+		if(!visited[st.top()])
+			dfs2(graph, st.top(), visited, scc, no_scc++);
+		st.pop();
 	}
 	int in_degree[no_scc];
 	memset(in_degree, 0, sizeof(in_degree));
-	for(i=1; i<=n; i++){
-		for(j=0; j<graph[i].size(); j++){
-			if(scc[i]!=scc[graph[i][j]])
-				in_degree[scc[graph[i][j]]]++;
+	for(i=1; i<=N; i++){
+		for(j=0; j<graph_inverse[i].size(); j++){
+			if(scc[i]!=scc[graph_inverse[i][j]])
+				in_degree[scc[graph_inverse[i][j]]]++;
 		}
 	}
 	for(i=0, c=0; i<no_scc; i++){
@@ -61,7 +61,7 @@ int main(){
 	if(c>1)
 		cout<<0<<"\n";
 	else{
-		for(i=1; i<=n; i++){
+		for(i=1; i<=N; i++){
 			if(in_degree[scc[i]]==0)
 				capcity.push_back(i);
 		}
