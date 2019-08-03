@@ -11,9 +11,9 @@ int reverse(int n){
 }
 
 int main(){
-	int t, a, b, sum;
-	cin>>t;
-	while(t--){
+	int N, a, b, sum;
+	cin>>N;
+	while(N--){
 		cin>>a>>b;
 		sum=reverse(reverse(a)+reverse(b));
 		cout<<sum<<"\n";
