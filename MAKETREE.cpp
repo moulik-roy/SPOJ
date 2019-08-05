@@ -6,11 +6,11 @@ using namespace std;
 
 stack <int> st;
 
-void dfs(vector <int> graph[], int u, int visited[]){
+void dfs(vector <int> tree[], int u, int visited[]){
 	visited[u]=1;
-	for(int i=0; i<graph[u].size(); i++){
-		if(!visited[graph[u][i]])
-			dfs(graph, graph[u][i], visited);
+	for(int i=0; i<tree[u].size(); i++){
+		if(!visited[tree[u][i]])
+			dfs(tree, tree[u][i], visited);
 	}
 	st.push(u);
 }
@@ -18,7 +18,7 @@ void dfs(vector <int> graph[], int u, int visited[]){
 int main(){
 	int N, K, W, i, u, prev;
 	cin>>N>>K;
-	vector <int> graph[N+1];
+	vector <int> tree[N+1];
 	int visited[N+1], parent[N+1];
 	memset(visited, 0, sizeof(visited));
 	memset(parent, -1, sizeof(parent));
@@ -26,12 +26,12 @@ int main(){
 		cin>>W;
 		while(W--){
 			cin>>u;
-			graph[i].push_back(u);
+			tree[i].push_back(u);
 		}
 	}
 	for(i=1, prev=0; i<=N; i++){
 		if(!visited[i])
-			dfs(graph, i, visited);
+			dfs(tree, i, visited);
 	}
 	while(!st.empty()){
 		u=st.top();
