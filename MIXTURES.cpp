@@ -10,7 +10,7 @@ int mixtures(int i, int j){
 	if(dp[i][j]!=-1)
 		return dp[i][j];
 	int k, temp;
-	for(k=i; k<=j; k++){
+	for(k=i; k<j; k++){
 		temp=mixtures(i, k)+mixtures(k+1, j)+(sum[i][k]*sum[k+1][j]);
 		if(dp[i][j]==-1 || dp[i][j]>temp)
 			dp[i][j]=temp;
