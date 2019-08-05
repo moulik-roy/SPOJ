@@ -13,7 +13,7 @@ int main(){
 		while(i<n){
 			if(s.empty() || h[s.top()]<=h[i])
 				s.push(i++);
-			while(!s.empty() && h[s.top()]>h[i]){
+			else{
 				cur_height=h[s.top()];
 				s.pop();
 				area=cur_height*(s.empty()?i:i-s.top()-1);
