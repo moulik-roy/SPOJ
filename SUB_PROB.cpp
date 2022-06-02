@@ -54,27 +54,27 @@ void aho_corasick(TrieNode *root){
 }
 
 void search(TrieNode *root, string &S, vector <char> &v) {
-	TrieNode *parent, *cur;
+	TrieNode *cur, *output;
 	int i, j;
-	parent=root;
+	cur=root;
 	for(i=0; i<S.length(); i++){
-		if(parent->children.find(S[i])!=parent->children.end()){
-			parent=parent->children[S[i]];
-			if(parent->indices.size()>0){
-				for(j=0; j<parent->indices.size(); j++)
-					v[parent->indices[j]]='Y';
-			}
-			cur=parent->output_link;
-			while(cur!=NULL){
+		if(cur->children.find(S[i])!=cur->children.end()){
+			cur=cur->children[S[i]];
+			if(cur->indices.size()>0){
 				for(j=0; j<cur->indices.size(); j++)
 					v[cur->indices[j]]='Y';
-				cur=cur->output_link;
+			}
+			output=cur->output_link;
+			while(output!=NULL){
+				for(j=0; j<output->indices.size(); j++)
+					v[output->indices[j]]='Y';
+				output=output->output_link;
 			}
 		}
 		else{
-			while(parent!=root && parent->children.find(S[i])==parent->children.end())
-				parent=parent->suffix_link;
-			if(parent->children.find(S[i])!=parent->children.end())
+			while(cur!=root && cur->children.find(S[i])==cur->children.end())
+				cur=cur->suffix_link;
+			if(cur->children.find(S[i])!=cur->children.end())
 				i--;
 		}
 	}
