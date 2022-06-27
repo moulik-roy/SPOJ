@@ -21,8 +21,7 @@ int main(){
     while(cin>>length){
         cin>>needle>>haystack;
         vector <int> lps=LPS(needle);
-        i=0;    j=0;
-       for(i=0; i<haystack.length(); i++){
+        for(i=0, j=0; i<haystack.length(); i++){
             while(j>0 && haystack[i]!=needle[j])
                 j=lps[j-1];
             if(haystack[i]==needle[j])
