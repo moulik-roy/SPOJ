@@ -14,7 +14,7 @@ int main(){
 		for(j=0; j<N; j++){
 			for(k=0; k<N; k++){
 				v1.push_back(S[i]*S[j]+S[k]);
-				if(a[k]!=0)
+				if(S[k]!=0)
 					v2.push_back((S[i]+S[j])*S[k]);
 			}
 		}
