@@ -18,8 +18,8 @@ vector <int> dijkstra(vector <pair<int, int>> graph[], int n, int src){
 			v=graph[u][i].first;
 			w=graph[u][i].second;
 			if(dist[v]==-1 || dist[v]>dist[u]+w){
-                if(dist[v]!=-1)
-                    st.erase(make_pair(dist[v], v));
+                		if(dist[v]!=-1)
+                    			st.erase(make_pair(dist[v], v));
 				dist[v]=dist[u]+w;
 				st.emplace(make_pair(dist[v], v));
 			}
