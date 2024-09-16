@@ -1,26 +1,27 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <queue>
+#include <set>
 #include <utility>
 using namespace std;
 
 vector <int> dijkstra(vector <pair<int, int>> graph[], int n, int src){
 	int i, u, v, w;
-	vector <int> dist(n, -1), visited(n, 0);
-	priority_queue <pair <int, int>, vector <pair<int, int>>, greater <pair<int, int>>> q;
+	vector <int> dist(n, -1);
+	set <pair <int, int>> st;
 	dist[src]=0;
-	q.push(make_pair(dist[src], src));
-	while(!q.empty()){
-		u=q.top().second;
-		q.pop();
-		visited[u]=1;
+	st.emplace(make_pair(dist[src], src));
+	while(!st.empty()){
+		u=st.begin()->second;
+		st.erase(st.begin());
 		for(i=0; i<graph[u].size(); i++){
 			v=graph[u][i].first;
 			w=graph[u][i].second;
-			if((dist[v]==-1 || dist[v]>dist[u]+w) && !visited[v]){
+			if(dist[v]==-1 || dist[v]>dist[u]+w){
+                if(dist[v]!=-1)
+                    st.erase(make_pair(dist[v], v));
 				dist[v]=dist[u]+w;
-				q.push(make_pair(dist[v], v));
+				st.emplace(make_pair(dist[v], v));
 			}
 		}
 	}
